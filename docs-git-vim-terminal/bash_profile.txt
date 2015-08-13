@@ -1,0 +1,116 @@
+export PATH="/usr/local/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+##
+# Your previous /Users/Turing/.bash_profile file was backed up as /Users/Turing/.bash_profile.macports-saved_2014-07-12_at_14:55:22
+# MacPorts Installer addition on 2014-07-12_at_15:07:16: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# JAVA
+#export JAVA_HOME="/Library/Java/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home"
+
+# ANDROID
+export ANDROID="/Users/Turing/android-sdks/platform-tools:/Users/Turing/android-sdks/tools"
+
+# APACHE ANT
+export APACHE_ANT="/Users/Turing/apache-ant/bin"
+
+export PATH=$APACHE_ANT:$ANDROID:$JAVA_HOME:$PATH
+
+#----------
+#  PROMPT 
+#----------
+# \e caractère d'échappement
+# \h nom de l'ordinateur
+# \H nom complet
+# \u utilisateur
+# \w chemin complet du répertoire courant
+# \W répertoire courant
+# \$ # si UID <> 0, $ sinon
+# exemple de prompt : export PS1="→ \u@\h: \w \$"
+
+# SET
+#  1 : GRAS
+#  2 : MAIGRE
+#  4 : SOULIGNE
+#  5 : CLIGNOTE
+#  7 : INVERSE
+#  8 : CACHE
+# 2* : RESET
+
+# COLORS
+# 39 : DEFAULT
+# 30 : NOIR
+# 31 : ROUGE
+# 32 : VERT
+# 33 : JAUNE
+# 34 : BLEU
+# 35 : MAGENTA
+# 36 : CYAN
+# 37 : GRIS CLAIR
+# 90 : GRIS FONCE
+# 91 : ROUGE CLAIRE
+# 92 : VERT CLAIRE
+# 93 : JAUNE CLAIRE
+# 94 : BLEU CLAIRE
+# 95 : MAGENTA CLAIRE
+# 96 : CYAN CLAIRE
+# 97 : BLANC
+
+# BACKGROUND COLORS
+# 49 : DEFAULT
+# 40 : NOIR
+# 41 : ROUGE
+# 42 : VERT
+# 43 : JAUNE
+# 44 : BLEU
+# 45 : MAGENTA
+# 46 : CYAN
+# 47 : GRIS CLAIR
+#100 : GRIS FONCE
+#101 : ROUGE CLAIRE
+#102 : VERT CLAIRE
+#103 : JAUNE CLAIRE
+#104 : BLEU CLAIRE
+#105 : MAGENTA CLAIRE
+#106 : CYAN CLAIRE
+#107 : BLANC
+
+#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export PS1="\e[35m\u\e[33m: \e[32;1m\w  \e[95;1m\e[33m\$\e[m "
+
+#-------------
+#  COLORS LS
+#-------------
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+#  1. Ex : directory
+#  2. Fx : symbolic link
+#  3. Bx : socket
+#  4. Dx : pipe
+#  5. Cx : executable
+#  6. eg : block special
+#  7. ed : character special
+#  8. ab : executable with setuid bit set
+#  9. ag : executable with setgid bit set
+# 10. ac : directory writable to others, with sticky bit
+# 11. ad : directory writable to others, without sticky
+# a black
+# b red
+# c green
+# d brown
+# e blue
+# f magenta
+# g cyan
+# h light grey
+# A bold black, usually shows up as dark grey
+# B bold red
+# C bold green
+# D bold brown, usually shows up as yellow
+# E bold blue
+# F bold magenta
+# G bold cyan
+# H bold light grey; looks like bright white
+# x default foreground or background
+
+alias ls='ls -GFh'
