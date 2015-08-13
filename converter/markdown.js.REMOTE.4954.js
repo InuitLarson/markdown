@@ -1,12 +1,3 @@
- var parseBold = function(str) {
-  var boldRegExp = /(\*\*)(.*?)\1/;
-  var stra = [];
-  while ((stra = boldRegExp.exec(str)) !== null) {
-    str = str.replace(stra[0], '<strong>' + stra[2] + '</strong>')
-  }
-  return str;
- }
-
  var parseHeadline = function(str) {
    var headlineRegExp =  /^(\#{1,6})([^\#\n]+)$/m;
    var stra = [];
@@ -26,15 +17,6 @@ var parseHorizontaleLine = function(str) {
   return str;
  }
 
-var parseItalic = function(str) {
-  var italicRegExp = /(\*|_)(.*?)\1/;
-  var stra = [];
-  while ((stra = italicRegExp.exec(str)) !== null) {
-    str = str.replace(stra[0], '<em>' + stra[2] + '</em>')
-  }
-  return str;
-} 
-
 var parseLink = function(str) {
   var linkRegExp = /\[([^\[]+)\]\(([^\)]+)\)/;
   var stra = [];
@@ -44,13 +26,12 @@ var parseLink = function(str) {
   return str;
  }
 
+
 var markdown = {
   parse: function (str, strict) {
     'use strict';
-    str = parseBold(str);
     str = parseHeadline(str);
     str = parseHorizontaleLine(str);
-    str = parseItalic(str);
     str = parseLink(str);
     return str;
   }

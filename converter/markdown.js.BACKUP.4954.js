@@ -26,6 +26,7 @@ var parseHorizontaleLine = function(str) {
   return str;
  }
 
+<<<<<<< HEAD
 var parseItalic = function(str) {
   var italicRegExp = /(\*|_)(.*?)\1/;
   var stra = [];
@@ -34,7 +35,7 @@ var parseItalic = function(str) {
   }
   return str;
 } 
-
+=======
 var parseLink = function(str) {
   var linkRegExp = /\[([^\[]+)\]\(([^\)]+)\)/;
   var stra = [];
@@ -44,14 +45,19 @@ var parseLink = function(str) {
   return str;
  }
 
+>>>>>>> DEV2
+
 var markdown = {
   parse: function (str, strict) {
     'use strict';
     str = parseBold(str);
     str = parseHeadline(str);
     str = parseHorizontaleLine(str);
+<<<<<<< HEAD
     str = parseItalic(str);
+=======
     str = parseLink(str);
+>>>>>>> DEV2
     return str;
   }
 };
