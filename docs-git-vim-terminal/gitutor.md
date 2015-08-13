@@ -15,8 +15,16 @@
 	
 ### *Projet* | *Utilisateur* | *Système*
 	git config [ -- [ local | global | system ] ] -l
+	
+### Emplacements
+
+- local : .git/config
+- global : ~/.gitconfig
+- system : /etc/gitconfig
 
 ### *Lecture* | *Ecriture*
+nécessaire à la première utilisation:
+
 	git config --get user.name
 	git config --get user.email
 	
@@ -26,10 +34,21 @@
 ### *Alias*
 	git config --global alias.st status
 	git config --global alias.co checkout
-
 permet le raccourci :
 
 	git st[atus]
+	
+#### directement dans ~/.gitconfig
+	[alias]
+		st = status
+		co = checkout
+		l = log --pretty=oneline --abbrev-commit --graph --decorate --all
+		b = branch
+		cg = config --global
+		a = add
+		c = commit
+		cm = commit
+		cgl = config --global -l
 
 ----
 
