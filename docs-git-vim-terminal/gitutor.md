@@ -189,3 +189,19 @@ sinon :
 	git merge BRANCH
 	
 ### résoudre des conflits
+	git diff
+	git mergetool
+	
+Modifier l'outil de résolution de conflit :
+
+	git config --global merge.tool kdiff3
+	
+Sous Mac, avec l'***alias.cg =  "config --global"*** :
+
+	git cg mergetool.kdiff3.path "/Applications/kdiff3.app/Contents/MacOS/kdiff3"
+	
+### annuler la résolution d'un conflit
+
+Revenir avant le merge:
+
+	git reset --hard HEAD^
