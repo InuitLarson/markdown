@@ -163,7 +163,7 @@ Sans changer de branche :
 
 	git branch BRANCH [REF]
 
-En changeant de brance :
+En changeant de branche :
 
 	git checkout -b BRANCH [REF]
 	
@@ -171,9 +171,21 @@ En changeant de brance :
 
 	git branch BRANCH [REF]
 	git checkout BRANCH
+	
+***Attention :*** Modification du dépôt local
 
 ### supprimer
+La branche doit être fusionner :
+
 	git branch -d BRANCH
+
+sinon :
+
+	git branch -D BRANCH
+	
+***Attention :*** Les commits de la branche sont orphelins. Ils seront supprimer sous 90 jours  (valeur par défaut du délai d'optimisation du dépôt Git).
 
 ### fusionner
 	git merge BRANCH
+	
+### résoudre des conflits
