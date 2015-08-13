@@ -5,7 +5,7 @@
 ##Serveurs Git
 - https://github.com (dépôt privé payant)
 - https://bitbucket.org (dépôt privé gratuit)
-- https:// (open source)
+- https://gitlab.org (open source)
 
 
 ## Configuration
@@ -205,3 +205,7 @@ Sous Mac, avec l'***alias.cg =  "config --global"*** :
 Revenir avant le merge:
 
 	git reset --hard HEAD^
+	
+----
+
+## Publier
