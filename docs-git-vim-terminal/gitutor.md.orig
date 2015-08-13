@@ -209,8 +209,12 @@ Revenir avant le merge:
 ---
 
 ## Publier
+<<<<<<< HEAD
 	git remote
 	git push -u origin master
+=======
+	git push -u origin master
+	
 ## Hack Fork Github
 Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.  
 
@@ -225,3 +229,4 @@ Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.
 	git push -u origin master
 	git remote
     	
+>>>>>>> 4e8d03a3856b1eb5b8b31bdab199ae63f307809e
