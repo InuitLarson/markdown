@@ -17,11 +17,22 @@ var parseHorizontaleLine = function(str) {
   return str;
  }
 
+var parseLink = function(str) {
+  var linkRegExp = /\[([^\[]+)\]\(([^\)]+)\)/;
+  var stra = [];
+  while ((stra = linkRegExp.exec(str)) !== null) {
+    str = str.replace(stra[0], '<a ' + 'href="' + stra[2] + '">' + stra[1] + '</a>');
+  }
+  return str;
+ }
+
+
 var markdown = {
   parse: function (str, strict) {
     'use strict';
     str = parseHeadline(str);
     str = parseHorizontaleLine(str);
+    str = parseLink(str);
     return str;
   }
 };
