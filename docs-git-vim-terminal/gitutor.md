@@ -210,3 +210,4 @@ Revenir avant le merge:
 
 ## Publier
 	git remote
+	git push -u origin master
