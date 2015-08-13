@@ -176,3 +176,4 @@ En changeant de brance :
 	git branch -d BRANCH
 
 ### fusionner
+	git merge BRANCH
