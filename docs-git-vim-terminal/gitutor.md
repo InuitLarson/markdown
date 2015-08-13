@@ -209,3 +209,4 @@ Revenir avant le merge:
 ---
 
 ## Publier
+	git remote
