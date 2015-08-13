@@ -209,3 +209,19 @@ Revenir avant le merge:
 ---
 
 ## Publier
+	git push -u origin master
+	
+## Hack Fork Github
+Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.  
+
+	git clone git@github.com:InuitLarson/depot.git depot-fork
+	cd chemin/depot-fork
+	vim .git/config
+	[remote "origin"]
+    		fetch = +refs/heads/*:refs/remotes/origin/*
+    		url = github.com:InuitLarson/depot.git depot 
+    		#remplacer depot par depot-fork
+	git remote add upstream github.com:InuitLarson/depot.git depot
+	git push -u origin master
+	git remote
+    	
