@@ -1,6 +1,6 @@
 # GIT TUTOR
 
-----
+---
 
 ##Serveurs Git
 - https://github.com (dépôt privé payant)
@@ -50,7 +50,7 @@ permet le raccourci :
 		cm = commit
 		cgl = config --global -l
 
-----
+---
 
 ## Repository
 
@@ -104,7 +104,7 @@ De la copie indexée non commitée
 	
 ####6 = 1 & 2 ( comité directement une modification )
 	git commit -a[m "message"] [file]
-----
+---
 
 #Générer une nouvelle clé SSH
 
@@ -121,13 +121,13 @@ puis les réponses par défaut.
 
 ##cloner en utilisant le protocole SSH (+sûr+rapide)
 	git clone "git@github.com:InuitLarson/Realtime-Markdown-Viewer.git"
-----
+---
 
 ## Exporter un repository (dans un répertoire existant)
 	git archive master | tar -x -C ~/export
 	git archive master | gzip > export.tar.gz
  
-----
+---
 
 ## Tagger un commit
 
@@ -148,7 +148,7 @@ tag lourd (lourd)
 ### publier
 	git push --tag
 	git push REMOTE TAG
-----
+---
 
 ## Gestion des branches
 
@@ -206,6 +206,6 @@ Revenir avant le merge:
 
 	git reset --hard HEAD^
 	
-----
+---
 
 ## Publier
