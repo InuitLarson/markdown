@@ -50,6 +50,9 @@ permet le raccourci :
 		cm = commit
 		cgl = config --global -l
 
+### commit template message
+	git config --global commit.template=~/.gitmsg.txt
+	 
 ---
 
 ## Repository
@@ -210,7 +213,12 @@ Revenir avant le merge:
 
 ## Publier
 	git remote
-	git push -u origin master
+	git push remote branch
+	
+Publier la branche _master_ sur le remote _origin_
+
+	git push origin master
+	
 ## Hack Fork Github
 Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.  
 

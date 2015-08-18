@@ -1,4 +1,4 @@
-export PATH="/usr/local/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 ##
 # Your previous /Users/Turing/.bash_profile file was backed up as /Users/Turing/.bash_profile.macports-saved_2014-07-12_at_14:55:22
 # MacPorts Installer addition on 2014-07-12_at_15:07:16: adding an appropriate PATH variable for use with MacPorts.
@@ -76,8 +76,13 @@ export PATH=$APACHE_ANT:$ANDROID:$JAVA_HOME:$PATH
 #106 : CYAN CLAIRE
 #107 : BLANC
 
-#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-export PS1="\e[35m\u\e[33m: \e[32;1m\w  \e[95;1m\e[33m\$\e[m "
+#GIT
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
+#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]$ "
+export PS1='\e[35m\u\e[33m: \e[32;1m\w  \e[95;1m\e[34m$(__git_ps1 "[⅄ %s]")\e[33m\$\e[m '
+#export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 #-------------
 #  COLORS LS
