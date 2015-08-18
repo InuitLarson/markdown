@@ -52,7 +52,17 @@ permet le raccourci :
 
 ### commit template message
 	git config --global commit.template=~/.gitmsg.txt
-	 
+
+### commit message editor
+	git config --global core.editor "subl -n -w"	 
+	
+Au préalable dans _.bashprofile_, ajouter :
+	
+	export PATH="~/bin:$PATH
+	export EDITOR='subl -w'
+	
+Créer le lien symbolique :
+	ln -s "/Applications/Sublime Text <n°version>.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 ---
 
 ## Repository
