@@ -319,4 +319,4 @@ Remplacer le contenu de **prepare-commit.msg** :
 	
 	pbpaste > prepare-commit.msg
 
- ***Attention***  pbcopy et pbpaste sur Mac OSX seulement   	
+ ***Attention***  pbcopy et pbpaste sur Mac OSX seulement.	
