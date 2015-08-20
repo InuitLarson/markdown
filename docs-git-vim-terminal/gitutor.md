@@ -306,7 +306,7 @@ Copier dans le presse-papier :
 	if [ -z "$firstLine" ] ;then 				
 		# $1 === $(git st)
 		# Suppression du # de commentaire si tabulation 
-		sed -i '.bak' 's/#	//' $1
+		sed -i '.bak' 's/#[TABUL]//' $1
 		# Ajout de l'auteur et de la branche en cours
 		sed -i '.bak' "1s/^/[$GIT_AUTHOR_NAME → $branchName]/" $1
 	fi
@@ -319,5 +319,8 @@ Remplacer le contenu de **prepare-commit.msg** :
 	
 	pbpaste > prepare-commit.msg
 
- ***Attention***  pbcopy et pbpaste sur Mac OSX seulement.
+ ***Attention :***  
+ 
+1. **pbcopy** et **pbpaste** sur _Mac OSX_ seulement.
+2. Remplacer [TABUL] par le caractère **tabulation**
  	
