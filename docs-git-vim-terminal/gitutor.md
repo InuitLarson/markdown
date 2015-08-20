@@ -63,6 +63,9 @@ Au préalable dans _.bashprofile_, ajouter :
 	
 Créer le lien symbolique :
 	ln -s "/Applications/Sublime Text <n°version>.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+
+### global .gitignore
+	git config --global core.excludesfile ~/.gitignore_global 	
 ---
 
 ## Repository
@@ -170,6 +173,9 @@ tag lourd (lourd)
 Par défaut, les branches locales :
 
 	git branch [ -r(emote) | -a(ll) ]
+
+### information de tracking
+	git branch -vv
 	
 ### créer
 Sans changer de branche :
@@ -198,6 +204,9 @@ sinon :
 	
 ***Attention :*** Les commits de la branche sont orphelins. Ils seront supprimer sous 90 jours  (valeur par défaut du délai d'optimisation du dépôt Git).
 
+### récupérer des branches distance
+	git fetch branch
+
 ### fusionner
 	git merge BRANCH
 	
@@ -221,13 +230,38 @@ Revenir avant le merge:
 	
 ---
 
-## Publier
-	git remote
-	git push remote branch
-	
-Publier la branche _master_ sur le remote _origin_
+## Synchronisation
 
-	git push origin master
+### Publier
+	git remote
+	git push -u  remote branch 		// -u ↔ --set-upstream
+	
+Publier la branche _master_ sur le remote _origin_ :
+
+	git push -u origin master
+	
+Publier la branche en cours sur _origin_ :
+
+	git push
+
+### Récupérer les informations des branches distance
+Informations de tracking :
+
+	git branch -vv
+	
+Toutes les branches d'une remote
+
+	git fetch remote
+
+Toutes les branches de toutes les remote
+
+	git fetch --all
+	
+### Récupérer une branche distante d'une _remote_
+	git pull remote branch 	// pull = fetch + merge
+	git pull 	// avec les informations de tracking 
+	
+---
 	
 ## Hack Fork Github
 Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.  
@@ -242,4 +276,16 @@ Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.
 	git remote add upstream github.com:InuitLarson/depot.git depot
 	git push -u origin master
 	git remote
+	
+---
+
+### Premier commit pour Bitbucket
+	cd ~/GIT/depot
+	git init
+	git remote add origin git@bitbucket.org:uid_bitbucket/depot.git 
+	touch 'FL'	> contributeurs.txt
+	git commit -am "Premier commit avec contributeurs.txt"
+	git push -u origin master
+		
+
     	
