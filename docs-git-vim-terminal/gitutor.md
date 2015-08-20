@@ -287,5 +287,36 @@ Github ne permet pas de "forker" (fourchetter!) simplement un de ses dépôts.
 	git commit -am "Premier commit avec contributeurs.txt"
 	git push -u origin master
 		
+### Hook : prepare-commit-msg
+	cd depot/.git/hooks/
+	mv prepare-commit-msg.sample prepare-commit.msg
+	
+Copier dans le presse-papier :
 
-    	
+	#!/bin/bash
+	set | egrep GIT > /dev/null
+	#echo AUTEUR is $GIT_AUTHOR_NAME
+	
+	branchPath=$(git symbolic-ref -q HEAD) 	#Somthing like refs/heads/myBranchName
+	branchName=${branchPath##*/}      		#Get text behind the last / of the branch path
+
+	firstLine=$(head -n1 $1)
+
+	# Check that this is not an amend by checking that the first line is empty
+	if [ -z "$firstLine" ] ;then 				
+		# $1 === $(git st)
+		# Suppression du # de commentaire si tabulation 
+		sed -i '.bak' 's/#	//' $1
+		# Ajout de l'auteur et de la branche en cours
+		sed -i '.bak' "1s/^/[$GIT_AUTHOR_NAME → $branchName]/" $1
+	fi
+
+Dans un ancien dépôt utilisant déjà le hook :
+	 
+	pbcopy < ~/GIT/old_depot/.git/hooks/prepare-commit.msg
+
+Remplacer le contenu de **prepare-commit.msg** :
+	
+	pbpaste > prepare-commit.msg
+
+ ***Attention***  pbcopy et pbpaste sur Mac OSX seulement   	
