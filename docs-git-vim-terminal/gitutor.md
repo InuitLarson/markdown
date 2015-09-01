@@ -50,6 +50,15 @@ permet le raccourci :
 		cm = commit
 		cgl = config --global -l
 
+### directement dans ~/.bash_profile
+	alias gst='clear && git st'
+	alias glo='clear && git log'
+	alias gco='git commit'
+	alias gb='git branch'
+	alias gbc='git checkout'
+	alias merge='git merge'
+	alias push='git push'
+
 ### commit template message
 	git config --global commit.template=~/.gitmsg.txt
 
@@ -64,8 +73,35 @@ Au préalable dans _.bashprofile_, ajouter :
 Créer le lien symbolique :
 	ln -s "/Applications/Sublime Text <n°version>.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
-### global .gitignore
-	git config --global core.excludesfile ~/.gitignore_global 	
+### .gitignore dans un répertoire du dépôt
+Exclure des fichiers du suivi :
+
+	# tout le répertoire app/uploads
+	app/uploads/*
+
+Tout ignorer sauf certains fichiers :
+
+	# ignorer tout
+	*
+
+	# sauf ...
+	!.gitignore
+	!*.js
+	# etc...
+
+	# ...même dans les sous répertoires
+	!*/
+
+### global .gitignore (tous les dépôts)
+	git config --global core.excludesfile ~/.gitignore_global 
+
+Par exemple:
+
+	*~
+	*.orig
+	.DS_Store
+	log.txt
+	
 ---
 
 ## Repository
@@ -84,14 +120,30 @@ Par défaut HEAD :
 
 où REF = HEAD | 40 caractères (chawan!)	
 
-### *Modification*
-De la copie locale:
+### *Différence*
+De la copie locale avec la copie indexée :
 
 	git diff 
 	
-De la copie indexée non commitée
+De la copie locale avec le dernier commit :
+
+	git diff HEAD
+	
+De la copie indexée avec le dernier commit :
 
 	git diff --staged
+	
+Entre les sommets de 2 branches :
+
+	git diff b1 b2
+	
+Entre les sommets d'une branche et la  branche de travail :
+
+	git diff b
+	
+Limiter la sortie aux noms de fichiers qui ont changés :
+
+	git diff --stat
 
 ### *Changements d'états d'un fichier: 
 	non indexé (untracked) | modifié (modified [not staged]) | indexé (staged) | commité
@@ -111,15 +163,25 @@ De la copie indexée non commitée
 ####3 ( ramener la zone de préparation dans la copie locale  )
 	git checkout -- <file>
 
-####4 ( ramener HEAD dans la zone de préparation )
-	git reset HEAD <file>
-	
+####4 ( ramener HEAD dans la zone de préparation | copie locale )
+	git reset --soft HEAD^ 
+	git reset --hard HEAD^	
 
 ####5 =  4 & 3 ( ramener HEAD dans la copie locale )
 	git checkout HEAD <file>
 	
 ####6 = 1 & 2 ( comité directement une modification )
 	git commit -a[m "message"] [file]
+	
+#### Remplacer la pointe courante de la branche par un nouveau commit
+	git commit --amend
+	
+⇔ 
+
+	git reset --soft HEAD^
+	... do something else to come up with the right tree ...
+	git commit -c ORIG_HEAD
+	
 ---
 
 #Générer une nouvelle clé SSH
