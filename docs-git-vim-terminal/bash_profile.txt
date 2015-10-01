@@ -1,5 +1,5 @@
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export PATH="~/bin:$PATH"
+export PATH="~/bin:~/BASH:$PATH"
 
 ##
 # Your previous /Users/Turing/.bash_profile file was backed up as /Users/Turing/.bash_profile.macports-saved_2014-07-12_at_14:55:22
@@ -123,4 +123,117 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 # H bold light grey; looks like bright white
 # x default foreground or background
 
+alias l='ls -al'
 alias ls='ls -GFh'
+
+#######
+# GIT #
+#######
+alias c="clear"
+alias r="reset"
+alias BP='subl ~/.bash_profile'
+alias gito='cd ~/GIT/'
+alias SG='gito && cd seriousgame/'
+alias JN='cd ~/Documents/WWW/jeunumerique/'
+alias CE='gito && cd nisaba-seshat/'
+alias NS='gito && cd nisaba-seshat/'
+alias EP='gito && cd experiment/'
+alias IO='gito && cd ionic/'
+alias IOA='gito && cd ionic/lpa/'
+alias I='ionic'
+alias IS='ionic serve'
+alias ISL='ionic serve --lab'
+
+function gitAddCommitMsg(){ 
+A=$(git symbolic-ref -q HEAD)
+B=${A##*/}
+git add $1
+git commit -m "[inuitLarson → $B] $1:$2"
+}
+alias gacm=gitAddCommitMsg
+
+function DumpSQL(){
+dump_database.sh $1	
+}
+alias dsql='DumpSQL'
+
+function gitDumpSQL(){
+date=$(date '+%d-%m-%Y:%H:%M')
+dsql $1
+gacm sosql/$1-$USER.sql $date
+}
+alias gdsql='gitDumpSQL'
+alias sosql='gdsql jeuxserieux'
+
+function gitArchiveSQLsha1-turing(){
+git archive -o sg.tar $1 sosql/jeuxserieux-Turing.sql 
+}
+function gitArchiveSQLsha1-orsa(){
+git archive -o sg.tar $1 sosql/jeuxvideo-orsa.sql
+}
+alias sqlSGsha1-T=gitArchiveSQLsha1-turing
+alias sqlSGsha1-O=gitArchiveSQLsha1-orsa
+
+function drupalfr(){
+git clone git@bitbucket.org:team_turing/drupalfr.git $1
+}
+
+function createLocalBranchWithTrackingOrigin(){
+git checkout --track origin/$1 
+}
+
+function createDistantBranchWithTrackingOrigin(){
+git push -u origin $1 
+}
+
+function extractSHAOne(){
+git archive -o archive/$1.tar.gz $1 $2
+cd archive && l
+}
+
+# STATUS
+alias gst='clear && git status'
+
+# LOG
+alias gl='reset && git log --graph --decorate --all'
+alias glo='reset && git log --pretty=oneline --abbrev-commit --graph --decorate --all'
+alias glop='glo | grep'
+
+# ADD - COMMIT
+alias gc='git commit'
+alias gad='git add .'
+alias gadd='git add'
+alias gac='git add . && git commit'
+alias amend='git commit --amend'
+
+# BRANCHE
+alias gb='git branch'
+alias gbb='git checkout -b'
+alias gbv='git branch -vv'
+alias gbr='git branch --remote'
+alias gba='git branch --all'
+alias gh='git checkout'
+alias merge='git merge'
+alias trackLoc='createLocalBranchWithTrackingOrigin'
+alias trackDist='createDistantBranchWithTrackingOrigin'
+
+# DIFF
+alias gd='git diff'
+alias gds='git diff --stat'
+alias gdh='git diff HEAD'
+alias gdc='git diff --cached'
+
+# SYNC
+alias push='git push'
+alias pull='git pull'
+
+# RESET
+alias grsh='git reset --soft HEAD^'
+alias grhh='git reset --hard HEAD^'
+
+# CLONE
+alias drupal='drupalfr'
+
+# ARCHIVE
+alias CHAWAN="extractSHAOne"
+

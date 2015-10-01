@@ -1,7 +1,7 @@
 # GIT TUTOR
 
 ---
-
+clone
 ##Serveurs Git
 - https://github.com (dépôt privé payant)
 - https://bitbucket.org (dépôt privé gratuit)
@@ -120,6 +120,12 @@ Par défaut HEAD :
 
 où REF = HEAD | 40 caractères (chawan!)	
 
+Suivi d'un fichier :
+
+	git log --follow -p -- [pathfile]
+	gitk [pathfile]
+
+
 ### *Différence*
 De la copie locale avec la copie indexée :
 
@@ -152,9 +158,10 @@ Limiter la sortie aux noms de fichiers qui ont changés :
 
 ####1 ( ajouter | supprimer | déplacer un fichier dans la zone de préparation )
 	git add [file]
-	git add -u 	( fichiers connus par git )
-	git rm file	( suppression )
-	git mv file	( déplacement )
+	git add -u 				( fichiers connus par git )
+	git rm [--cached] file	( suppression du git [pas du disque] )
+	git mv file				( déplacement )
+
 	
 ####2 ( commiter les modifications [d'un fichier] )
 	git commit [file]
@@ -240,6 +247,15 @@ Par défaut, les branches locales :
 	git branch -vv
 	
 ### créer
+
+En local, depuis une branche distante ( crée la branche de même nom si le nom local [bch_loc] est omis ) :
+
+	git checkout --track remote/branch [bch_loc]
+	
+À distance, depuis une branche locale ( crée la branche de même nom si le nom distant [bch_dist] est omis ):
+
+	git push -u remote[/bch_dist] branch 	// -u ↔ --set-upstream
+	
 Sans changer de branche :
 
 	git branch BRANCH [REF]
